@@ -3,217 +3,653 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Forneria Tech — Em breve</title>
-<meta name="description" content="O sistema inteligente para pizzarias que fazem história. Gerencie pedidos, equipe, cardápio e entregas em um só lugar.">
+<title>Forneria Tech — O sistema para pizzarias que fazem história</title>
+<meta name="description" content="Gerencie pedidos, cardápio, cozinha e clientes em um só lugar. O sistema feito para pizzarias que levam o negócio a sério.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:'DM Sans',sans-serif;
-    -webkit-font-smoothing:antialiased;
-    color:#1E1E1E;
-    background:#F5EFE6;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:48px 22px;
-    position:relative;
-    overflow-x:hidden;
-  }
+/* ── Reset ────────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#1E1E1E;background:#F5EFE6;overflow-x:hidden}
 
-  /* decorative ambient shapes */
-  .shape{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
-  .shape-1{width:560px;height:560px;background:radial-gradient(circle,rgba(196,92,46,0.10),transparent 70%);top:-180px;right:-140px}
-  .shape-2{width:500px;height:500px;background:radial-gradient(circle,rgba(61,107,79,0.08),transparent 70%);bottom:-170px;left:-130px}
-  .shape-3{width:300px;height:300px;background:radial-gradient(circle,rgba(196,92,46,0.06),transparent 70%);bottom:10%;right:-80px}
+/* ── Tokens ───────────────────────────────────────────────── */
+:root{
+  --brasa:#C45C2E;
+  --carvao:#1E1E1E;
+  --massa:#F5EFE6;
+  --creme:#EDE3D4;
+  --borda:#D9CFC3;
+  --verde:#3D6B4F;
+  --muted:#6B6B6B;
+  --subtle:#9c968d;
+}
 
-  .wrap{position:relative;z-index:1;width:100%;max-width:600px;text-align:center}
+/* ── Navbar ───────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:62px;
+  background:rgba(245,239,230,0.82);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(217,207,195,0.6);
+  display:flex;align-items:center;
+  padding:0 max(24px, calc((100% - 1100px)/2));
+  gap:32px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;flex-shrink:0}
+.nav-logo-mark{width:32px;height:32px;border-radius:8px;background:var(--brasa);display:flex;align-items:center;justify-content:center}
+.nav-logo-name{font-family:'DM Serif Display',serif;font-size:18px;color:var(--carvao)}
+.nav-logo-sub{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--subtle)}
+.nav-links{display:flex;align-items:center;gap:28px;flex:1;margin-left:16px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--carvao)}
+.nav-ctas{display:flex;align-items:center;gap:12px;margin-left:auto}
+.btn-ghost{font-size:14px;font-weight:500;color:var(--carvao);text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--borda);background:transparent;font-family:inherit;cursor:pointer;transition:background .15s,border-color .15s}
+.btn-ghost:hover{background:var(--creme);border-color:var(--borda)}
+.btn-primary{font-size:14px;font-weight:700;color:#fff;text-decoration:none;padding:9px 20px;border-radius:8px;background:var(--brasa);border:none;font-family:inherit;cursor:pointer;transition:background .15s,transform .08s}
+.btn-primary:hover{background:#ad4f26}
+.btn-primary:active{transform:translateY(1px)}
 
-  /* logo */
-  .logo{display:flex;flex-direction:column;align-items:center;gap:15px;margin-bottom:34px}
-  .logo-mark{
-    width:64px;height:64px;border-radius:17px;background:#C45C2E;
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 8px 22px rgba(196,92,46,0.28);
-  }
-  .logo-name{font-family:'DM Serif Display',serif;font-size:30px;line-height:1;color:#1E1E1E}
-  .logo-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#9c968d;margin-top:5px}
+/* ── Seções ───────────────────────────────────────────────── */
+section{padding:100px max(24px, calc((100% - 1100px)/2))}
+.inner{max-width:1100px;margin:0 auto}
 
-  /* badge */
-  .badge{
-    display:inline-flex;align-items:center;gap:8px;
-    background:#EDE3D4;border:1px solid #D9CFC3;border-radius:30px;
-    padding:8px 16px;font-size:12.5px;font-weight:600;color:#C45C2E;
-    letter-spacing:.4px;margin-bottom:28px;
-  }
-  .badge .dot{width:8px;height:8px;border-radius:50%;background:#C45C2E;position:relative}
-  .badge .dot::after{
-    content:"";position:absolute;inset:-4px;border-radius:50%;
-    background:rgba(196,92,46,0.35);animation:pulse 2s ease-out infinite;
-  }
-  @keyframes pulse{0%{transform:scale(.6);opacity:.8}100%{transform:scale(1.8);opacity:0}}
+/* ── Hero ─────────────────────────────────────────────────── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding-top:120px;padding-bottom:80px;
+  padding-left:max(24px, calc((100% - 760px)/2));
+  padding-right:max(24px, calc((100% - 760px)/2));
+  position:relative;overflow:hidden;
+}
+.hero-shape-1{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(196,92,46,0.10),transparent 70%);top:-220px;right:-180px;pointer-events:none}
+.hero-shape-2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(61,107,79,0.07),transparent 70%);bottom:-160px;left:-140px;pointer-events:none}
 
-  /* headline */
-  h1{
-    font-family:'DM Serif Display',serif;
-    font-weight:400;
-    font-size:clamp(34px,6vw,54px);
-    line-height:1.08;
-    color:#1E1E1E;
-    letter-spacing:-0.5px;
-    margin-bottom:22px;
-    text-wrap:balance;
-  }
-  h1 .accent{color:#C45C2E;font-style:italic}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--creme);border:1px solid var(--borda);border-radius:30px;
+  padding:7px 16px;font-size:12.5px;font-weight:600;color:var(--brasa);
+  letter-spacing:.3px;margin-bottom:32px;
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--brasa);position:relative;flex-shrink:0}
+.hero-badge .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:rgba(196,92,46,0.3);animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.5);opacity:.8}100%{transform:scale(2);opacity:0}}
 
-  .subtitle{
-    font-size:clamp(15px,2.4vw,18px);
-    line-height:1.6;
-    color:#6B6B6B;
-    max-width:480px;
-    margin:0 auto 36px auto;
-    text-wrap:pretty;
-  }
+h1{
+  font-family:'DM Serif Display',serif;font-weight:400;
+  font-size:clamp(40px,6.5vw,72px);line-height:1.05;
+  letter-spacing:-1.5px;color:var(--carvao);
+  margin-bottom:24px;text-wrap:balance;
+}
+h1 .accent{color:var(--brasa);font-style:italic}
 
-  /* form */
-  form{
-    display:flex;gap:10px;width:100%;max-width:480px;margin:0 auto;
-    background:#EDE3D4;border:1px solid #D9CFC3;border-radius:14px;
-    padding:8px;box-shadow:0 8px 28px rgba(30,30,30,0.06);
-  }
-  .field{flex:1;display:flex;align-items:center;gap:10px;padding-left:14px;min-width:0}
-  .field svg{flex-shrink:0}
-  input[type=email]{
-    flex:1;width:100%;border:none;background:transparent;outline:none;
-    font-family:inherit;font-size:15px;color:#1E1E1E;padding:13px 0;min-width:0;
-  }
-  input[type=email]::placeholder{color:#a99f92}
-  button{
-    flex-shrink:0;display:inline-flex;align-items:center;gap:8px;
-    background:#C45C2E;color:#fff;border:none;border-radius:9px;
-    padding:14px 22px;font-family:inherit;font-size:15px;font-weight:700;
-    cursor:pointer;transition:background .14s,transform .08s;white-space:nowrap;
-  }
-  button:hover{background:#ad4f26}
-  button:active{transform:translateY(1px)}
+.hero-sub{
+  font-size:clamp(16px,2.2vw,20px);line-height:1.65;color:var(--muted);
+  max-width:560px;margin:0 auto 44px;text-wrap:pretty;
+}
 
-  .hint{font-size:12.5px;color:#a99f92;margin-top:16px}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.cta-main{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--carvao);color:#F5EFE6;
+  border:none;border-radius:12px;padding:16px 28px;
+  font-family:inherit;font-size:16px;font-weight:700;
+  cursor:pointer;text-decoration:none;
+  transition:background .15s,transform .08s;
+}
+.cta-main:hover{background:#2d2d2d}
+.cta-main:active{transform:translateY(1px)}
+.cta-sec{
+  display:inline-flex;align-items:center;gap:9px;
+  background:transparent;color:var(--carvao);
+  border:1.5px solid var(--borda);border-radius:12px;padding:15px 28px;
+  font-family:inherit;font-size:16px;font-weight:600;
+  cursor:pointer;text-decoration:none;
+  transition:background .15s,border-color .15s;
+}
+.cta-sec:hover{background:var(--creme);border-color:#c4b9ae}
 
-  /* footer */
-  footer{
-    position:relative;z-index:1;margin-top:auto;padding-top:54px;
-    font-size:13px;color:#9c968d;text-align:center;line-height:1.6;
-  }
-  footer a{color:#6B6B6B;text-decoration:none;font-weight:500}
-  footer a:hover{color:#C45C2E}
+.hero-note{font-size:13px;color:var(--subtle);margin-top:20px}
 
-  /* mobile */
-  @media (max-width:560px){
-    form{flex-direction:column;gap:8px;padding:10px}
-    .field{padding:4px 0 4px 14px}
-    button{justify-content:center;padding:14px}
-    .badge{margin-bottom:22px}
-  }
+/* ── App preview ──────────────────────────────────────────── */
+#preview{
+  padding:0 max(24px, calc((100% - 1200px)/2)) 100px;
+}
+.browser-frame{
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(30,30,30,0.22);
+  border:1px solid rgba(30,30,30,0.14);
+  background:#e8e3dd;
+}
+.browser-bar{
+  height:44px;background:linear-gradient(180deg,#f0ebe5 0%,#e8e3dd 100%);
+  display:flex;align-items:center;padding:0 16px;gap:12px;
+  border-bottom:1px solid rgba(30,30,30,0.10);
+  flex-shrink:0;
+}
+.browser-dots{display:flex;align-items:center;gap:7px}
+.browser-dot{width:13px;height:13px;border-radius:50%}
+.browser-dot.red{background:#ff5f57;border:1px solid rgba(0,0,0,0.12)}
+.browser-dot.yellow{background:#ffbd2e;border:1px solid rgba(0,0,0,0.12)}
+.browser-dot.green{background:#28c840;border:1px solid rgba(0,0,0,0.12)}
+.browser-url{
+  flex:1;margin:0 16px;height:26px;
+  background:rgba(255,255,255,0.55);border:1px solid rgba(30,30,30,0.10);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#9c968d;font-family:'DM Sans',sans-serif;letter-spacing:.2px;
+}
+.browser-url svg{margin-right:5px;opacity:.5}
+.browser-frame img{width:100%;display:block}
+
+/* ── Stats ────────────────────────────────────────────────── */
+#stats{
+  padding:72px max(24px, calc((100% - 1100px)/2));
+  background:var(--creme);border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);
+}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{text-align:center;padding:20px 16px;position:relative}
+.stat-item+.stat-item::before{content:"";position:absolute;left:0;top:20%;bottom:20%;width:1px;background:var(--borda)}
+.stat-num{font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,54px);color:var(--carvao);line-height:1}
+.stat-num span{color:var(--brasa)}
+.stat-label{font-size:13.5px;color:var(--muted);margin-top:6px;font-weight:500}
+
+/* ── Features ─────────────────────────────────────────────── */
+#features{padding:100px max(24px, calc((100% - 1100px)/2))}
+.section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--brasa);font-weight:600;margin-bottom:14px}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,46px);font-weight:400;color:var(--carvao);line-height:1.1;letter-spacing:-.5px;margin-bottom:16px;text-wrap:balance}
+.section-sub{font-size:17px;color:var(--muted);line-height:1.6;max-width:560px;margin-bottom:64px;text-wrap:pretty}
+
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{
+  background:var(--creme);border:1px solid var(--borda);border-radius:18px;
+  padding:32px 28px;
+  transition:transform .18s,box-shadow .18s;
+}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,30,30,0.08)}
+.feature-icon{
+  width:48px;height:48px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;
+}
+.feature-icon.orange{background:rgba(196,92,46,0.12)}
+.feature-icon.green{background:rgba(61,107,79,0.12)}
+.feature-icon.dark{background:rgba(30,30,30,0.08)}
+.feature-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--carvao);margin-bottom:10px;font-weight:400}
+.feature-desc{font-size:15px;color:var(--muted);line-height:1.65}
+
+/* ── Feature destaque ─────────────────────────────────────── */
+#feature-big{
+  padding:0 max(24px, calc((100% - 1100px)/2)) 100px;
+}
+.feature-big-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.feature-big-text .section-sub{margin-bottom:32px}
+.feature-big-checklist{display:flex;flex-direction:column;gap:14px}
+.check-item{display:flex;align-items:flex-start;gap:12px}
+.check-dot{width:22px;height:22px;border-radius:50%;background:rgba(61,107,79,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.check-text{font-size:15.5px;color:var(--carvao);font-weight:500;line-height:1.4}
+.feature-big-visual{
+  background:var(--carvao);border-radius:18px;overflow:hidden;
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 24px 56px rgba(30,30,30,0.16);
+}
+.visual-placeholder{color:rgba(255,255,255,0.15);font-size:14px;text-align:center;padding:24px}
+
+/* ── Planos ───────────────────────────────────────────────── */
+#plans{
+  padding:100px max(24px, calc((100% - 1100px)/2));
+  text-align:center;background:var(--creme);
+  border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);
+}
+#plans .section-sub{margin:0 auto 64px;max-width:500px}
+.plan-card{
+  max-width:420px;margin:0 auto;
+  background:#F5EFE6;border:1.5px solid var(--borda);border-radius:22px;
+  padding:44px 40px;text-align:left;
+  box-shadow:0 12px 40px rgba(30,30,30,0.07);
+}
+.plan-tag{display:inline-block;background:var(--brasa);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 12px;border-radius:30px;margin-bottom:22px}
+.plan-name{font-family:'DM Serif Display',serif;font-size:30px;color:var(--carvao);margin-bottom:8px;font-weight:400}
+.plan-desc{font-size:14.5px;color:var(--muted);margin-bottom:28px;line-height:1.55}
+.plan-price-wrap{display:flex;align-items:baseline;gap:6px;margin-bottom:8px}
+.plan-currency{font-size:18px;font-weight:700;color:var(--carvao);margin-top:6px}
+.plan-amount{font-family:'DM Serif Display',serif;font-size:58px;color:var(--carvao);line-height:1}
+.plan-period{font-size:15px;color:var(--muted);font-weight:500}
+.plan-note{font-size:12.5px;color:var(--subtle);margin-bottom:32px}
+.plan-divider{height:1px;background:var(--borda);margin:28px 0}
+.plan-items{display:flex;flex-direction:column;gap:13px;margin-bottom:36px}
+.plan-item{display:flex;align-items:center;gap:11px;font-size:15px;color:var(--carvao)}
+.plan-item-dot{width:20px;height:20px;border-radius:50%;background:rgba(61,107,79,0.13);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.plan-cta{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;background:var(--brasa);color:#fff;
+  border:none;border-radius:12px;padding:17px;
+  font-family:inherit;font-size:16px;font-weight:700;
+  cursor:pointer;text-decoration:none;
+  transition:background .15s,transform .08s;
+}
+.plan-cta:hover{background:#ad4f26}
+.plan-cta:active{transform:translateY(1px)}
+.plan-trial{text-align:center;font-size:12.5px;color:var(--subtle);margin-top:14px}
+
+/* ── CTA final ────────────────────────────────────────────── */
+#cta-final{
+  padding:100px max(24px, calc((100% - 700px)/2));
+  text-align:center;
+}
+#cta-final h2{
+  font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);
+  color:var(--carvao);line-height:1.08;letter-spacing:-.5px;
+  margin-bottom:20px;font-weight:400;text-wrap:balance;
+}
+#cta-final h2 .accent{color:var(--brasa);font-style:italic}
+#cta-final p{font-size:17px;color:var(--muted);margin-bottom:40px;line-height:1.6}
+.final-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer{
+  background:var(--carvao);color:#EDE3D4;
+  padding:56px max(24px, calc((100% - 1100px)/2)) 40px;
+}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:52px}
+.footer-brand{display:flex;flex-direction:column;gap:14px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo-mark{width:34px;height:34px;border-radius:8px;background:var(--brasa);display:flex;align-items:center;justify-content:center}
+.footer-logo-name{font-family:'DM Serif Display',serif;font-size:18px;color:#EDE3D4}
+.footer-logo-sub{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:#7d7872}
+.footer-tagline{font-size:14px;color:#8a8580;line-height:1.6;max-width:280px}
+.footer-col h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#7d7872;font-weight:600;margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:14px;color:#8a8580;text-decoration:none;transition:color .15s}
+.footer-col ul li a:hover{color:#EDE3D4}
+.footer-bottom{border-top:1px solid rgba(237,227,212,0.08);padding-top:28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-copy{font-size:13px;color:#5c5954}
+.footer-social{display:flex;align-items:center;gap:14px}
+.footer-social a{color:#5c5954;transition:color .15s;text-decoration:none}
+.footer-social a:hover{color:#EDE3D4}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media(max-width:900px){
+  .features-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(3)::before{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .feature-big-grid{grid-template-columns:1fr;gap:40px}
+  .feature-big-visual{display:none}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .hero-ctas{flex-direction:column;align-items:stretch;max-width:300px;margin:0 auto}
+  .plan-card{padding:32px 24px}
+}
 </style>
 </head>
 <body>
-  <div class="shape shape-1"></div>
-  <div class="shape shape-2"></div>
-  <div class="shape shape-3"></div>
 
-  <div class="wrap">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <div class="logo-mark">
-        <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" fill="#F5EFE6" d="M14 54 L14 30 A18 18 0 0 1 50 30 L50 54 Z M23 50 L23 33 A9 9 0 0 1 41 33 L41 50 Z M32 48 C26 45 27 38.5 32 34.5 C37 38.5 38 45 32 48 Z"/>
-        </svg>
-      </div>
-      <div>
-        <div class="logo-name">Forneria</div>
-        <div class="logo-sub">Tech</div>
-      </div>
+<!-- ── NAVBAR ──────────────────────────────────────────────── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+        <path fill-rule="evenodd" fill="#F5EFE6" d="M14 54 L14 30 A18 18 0 0 1 50 30 L50 54 Z M23 50 L23 33 A9 9 0 0 1 41 33 L41 50 Z M32 48 C26 45 27 38.5 32 34.5 C37 38.5 38 45 32 48 Z"/>
+      </svg>
     </div>
+    <div>
+      <div class="nav-logo-name">Forneria</div>
+      <div class="nav-logo-sub">Tech</div>
+    </div>
+  </a>
 
-    <!-- BADGE -->
-    <div class="badge"><span class="dot"></span>Em breve</div>
-
-    <!-- HEADLINE -->
-    <h1>O sistema inteligente para pizzarias que <span class="accent">fazem história.</span></h1>
-
-    <p class="subtitle">Gerencie pedidos, equipe, cardápio e entregas em um só lugar. Em breve disponível para sua pizzaria.</p>
-
-    <!-- FORM -->
-    <form id="form">
-      <div class="field">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#9c968d" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="#9c968d" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <input id="email-input" type="email" placeholder="Seu melhor e-mail" aria-label="E-mail" autocomplete="email">
-      </div>
-      <button id="btn" type="submit">
-        Quero ser avisado
-        <svg id="btn-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </form>
-
-    <div id="hint" class="hint">Avisamos você assim que o Forneria estiver disponível. Sem spam.</div>
-
-    <a href="https://instagram.com/forneriatech" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;text-decoration:none;color:#6B6B6B;font-size:14px;font-weight:500;transition:color .14s" onmouseover="this.style.color='#C45C2E'" onmouseout="this.style.color='#6B6B6B'">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
-      @forneriatech
-    </a>
-
-    <script>
-      const form = document.getElementById('form')
-      const input = document.getElementById('email-input')
-      const btn = document.getElementById('btn')
-      const hint = document.getElementById('hint')
-
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault()
-        const email = input.value.trim()
-        if (!email) return
-
-        btn.disabled = true
-        btn.textContent = 'Enviando...'
-
-        try {
-          const res = await fetch('/api/subscribe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email }),
-          })
-
-          if (res.ok) {
-            form.style.display = 'none'
-            hint.textContent = '✓ Anotado! Você será o primeiro a saber.'
-            hint.style.color = '#3D6B4F'
-            hint.style.fontWeight = '600'
-          } else {
-            hint.textContent = 'Algo deu errado. Tente novamente.'
-            hint.style.color = '#C0392B'
-            btn.disabled = false
-            btn.textContent = 'Quero ser avisado'
-          }
-        } catch {
-          hint.textContent = 'Erro de conexão. Tente novamente.'
-          hint.style.color = '#C0392B'
-          btn.disabled = false
-          btn.textContent = 'Quero ser avisado'
-        }
-      })
-    </script>
+  <div class="nav-links">
+    <a href="#features">Recursos</a>
+    <a href="#plans">Planos</a>
+    <a href="#cta-final">Contato</a>
   </div>
 
-  <footer>
-    © 2026 Forneria Tech · <a><span class="__cf_email__" data-cfemail="f5969a9b8194819ab5939a879b90879c948190969ddb969a98db9787">contato@forneriatech.com.br</span></a>
-  </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+  <div class="nav-ctas">
+    <a href="https://app.forneriatech.com.br/login" class="btn-ghost">Entrar</a>
+    <a href="mailto:contato@forneriatech.com.br?subject=Quero%20começar%20no%20Forneria%20Tech" class="btn-primary">Começar grátis</a>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-shape-1"></div>
+  <div class="hero-shape-2"></div>
+
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Novo · Já disponível para sua pizzaria
+  </div>
+
+  <h1>O sistema para pizzarias<br>que <span class="accent">fazem história.</span></h1>
+
+  <p class="hero-sub">
+    Pedidos, cozinha, cardápio e clientes em um só lugar.
+    Do recebimento ao despacho — tudo sob controle, em tempo real.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="mailto:contato@forneriatech.com.br?subject=Quero%20começar%20no%20Forneria%20Tech" class="cta-main">
+      Começar grátis
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#F5EFE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#features" class="cta-sec">Ver como funciona</a>
+  </div>
+
+  <p class="hero-note">Sem cartão de crédito · Cancele quando quiser</p>
+</section>
+
+<!-- ── APP PREVIEW ─────────────────────────────────────────── -->
+<div id="preview">
+  <div class="browser-frame">
+    <div class="browser-bar">
+      <div class="browser-dots">
+        <div class="browser-dot red"></div>
+        <div class="browser-dot yellow"></div>
+        <div class="browser-dot green"></div>
+      </div>
+      <div class="browser-url">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        www.forneriatech.com.br
+      </div>
+    </div>
+    <img src="dashboard.png" alt="Dashboard Forneria Tech">
+  </div>
+</div>
+
+<!-- ── STATS ────────────────────────────────────────────────── -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-num"><span>+</span>500</div>
+      <div class="stat-label">Pedidos gerenciados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span>—</span>40%</div>
+      <div class="stat-label">Menos erros na cozinha</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Online, em tempo real</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num"><span>24</span>/7</div>
+      <div class="stat-label">Suporte disponível</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ─────────────────────────────────────────────── -->
+<section id="features">
+  <div class="inner">
+    <div class="section-label">Recursos</div>
+    <h2 class="section-title">Tudo que sua pizzaria<br>precisa para crescer.</h2>
+    <p class="section-sub">Do atendimento ao fechamento do caixa. Uma plataforma, zero planilha, zero confusão.</p>
+
+    <div class="features-grid">
+
+      <!-- Pedidos -->
+      <div class="feature-card">
+        <div class="feature-icon orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M6 7h12l1 13H5L6 7Z" stroke="#C45C2E" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 9V6a3 3 0 0 1 6 0v3" stroke="#C45C2E" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">Pedidos</div>
+        <p class="feature-desc">Abertura em segundos — balcão, mesa ou entrega. Cada item com tamanho, borda e adicionais. Do clique ao despacho, nada se perde no meio do caminho.</p>
+      </div>
+
+      <!-- Cardápio -->
+      <div class="feature-card">
+        <div class="feature-icon green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="2" stroke="#3D6B4F" stroke-width="1.8"/>
+            <path d="M8 9h8M8 13h5" stroke="#3D6B4F" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">Cardápio</div>
+        <p class="feature-desc">Monte categorias, sabores, tamanhos e bordas em minutos. Altere preços, pause itens esgotados e atualize o cardápio na hora — sem reimprimir nada.</p>
+      </div>
+
+      <!-- Clientes -->
+      <div class="feature-card">
+        <div class="feature-icon dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="8" r="4" stroke="#1E1E1E" stroke-width="1.8"/>
+            <path d="M4 20c0-3.314 3.582-6 8-6s8 2.686 8 6" stroke="#1E1E1E" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">Clientes</div>
+        <p class="feature-desc">Cadastro automático pelo telefone, histórico completo de pedidos e endereços salvos. Atenda quem já conhece sua pizza com a agilidade que ela merece.</p>
+      </div>
+
+      <!-- Estoque -->
+      <div class="feature-card">
+        <div class="feature-icon orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M2 9h20M2 9l2-5h16l2 5M2 9v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9" stroke="#C45C2E" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 13h6" stroke="#C45C2E" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">Estoque</div>
+        <p class="feature-desc">Controle ingredientes, insumos e embalagens com alertas de estoque mínimo. Nunca mais descobrir na sexta à noite que a farinha acabou.</p>
+      </div>
+
+      <!-- Equipe -->
+      <div class="feature-card">
+        <div class="feature-icon green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="9" cy="8" r="3" stroke="#3D6B4F" stroke-width="1.8"/>
+            <circle cx="17" cy="8" r="3" stroke="#3D6B4F" stroke-width="1.8"/>
+            <path d="M2 20c0-2.761 3.134-5 7-5s7 2.239 7 5" stroke="#3D6B4F" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M22 20c0-2.209-2.239-4-5-4" stroke="#3D6B4F" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">Equipe</div>
+        <p class="feature-desc">Gerencie colaboradores com perfis de acesso por função — caixa, cozinheiro, entregador ou gerente. Cada pessoa vê exatamente o que precisa, nada além.</p>
+      </div>
+
+      <!-- Logística -->
+      <div class="feature-card">
+        <div class="feature-icon dark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4" stroke="#1E1E1E" stroke-width="1.8"/>
+            <path d="M17 11h2l3 4v3h-2" stroke="#1E1E1E" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="7" cy="17" r="2" stroke="#1E1E1E" stroke-width="1.8"/>
+            <circle cx="17" cy="17" r="2" stroke="#1E1E1E" stroke-width="1.8"/>
+            <path d="M9 17h6M3 11h14" stroke="#1E1E1E" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feature-title">Logística</div>
+        <p class="feature-desc">Acompanhe cada entrega em tempo real: entregador alocado, tempo na rua e status de despacho. Menos ligação do cliente perguntando onde está a pizza.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE DESTAQUE ─────────────────────────────────────── -->
+<section id="feature-big">
+  <div class="feature-big-grid">
+    <div class="feature-big-text">
+      <div class="section-label">Painel da cozinha</div>
+      <h2 class="section-title">A cozinha vê tudo.<br>Em tempo real.</h2>
+      <p class="section-sub">Nada de papel, nada de grito. Cada pedido aparece na tela assim que chega, com status, tempo e prioridade visíveis para toda a equipe.</p>
+      <div class="feature-big-checklist">
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="check-text">Colunas por status: Recebido, Em preparo, Pronto, Despachado</span>
+        </div>
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="check-text">Alerta visual de tempo: verde, amarelo e vermelho por demora</span>
+        </div>
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="check-text">Avanço de status com um toque — sem digitar nada</span>
+        </div>
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="check-text">Atualização automática a cada 30 segundos</span>
+        </div>
+      </div>
+    </div>
+    <div class="feature-big-visual" style="background:none;box-shadow:none;border-radius:0;overflow:visible">
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+          </div>
+          <div class="browser-url">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        www.forneriatech.com.br
+          </div>
+        </div>
+        <img src="kds.png" alt="Painel da Cozinha Forneria Tech">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PLANOS ────────────────────────────────────────────────── -->
+<section id="plans">
+  <div class="inner">
+    <div class="section-label">Planos</div>
+    <h2 class="section-title">Simples assim.</h2>
+    <p class="section-sub">Um plano completo, sem surpresas na fatura. Tudo que sua pizzaria precisa, no mesmo lugar.</p>
+
+    <div class="plan-card">
+      <div class="plan-tag">Mais popular</div>
+      <div class="plan-name">Plano Completo</div>
+      <p class="plan-desc">Para pizzarias que querem gerenciar pedidos, cozinha e clientes com eficiência real.</p>
+
+      <div class="plan-price-wrap">
+        <span class="plan-currency">R$</span>
+        <span class="plan-amount">69</span>
+        <span style="font-family:'DM Serif Display',serif;font-size:36px;color:var(--carvao);align-self:flex-start;margin-top:10px">,99</span>
+        <span class="plan-period">&nbsp;/ mês</span>
+      </div>
+      <p class="plan-note">por filial · cobrado mensalmente</p>
+
+      <div class="plan-divider"></div>
+
+      <div class="plan-items">
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Gestão completa de pedidos
+        </div>
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Painel da cozinha (KDS) em tempo real
+        </div>
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Cardápio digital completo
+        </div>
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Gestão de clientes e histórico
+        </div>
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Dashboard financeiro
+        </div>
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Configurações por filial
+        </div>
+        <div class="plan-item">
+          <div class="plan-item-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#3D6B4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Suporte via WhatsApp
+        </div>
+      </div>
+
+      <a href="mailto:contato@forneriatech.com.br?subject=Quero%20começar%20no%20Forneria%20Tech" class="plan-cta">
+        Começar agora
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="plan-trial">7 dias grátis · Sem cartão de crédito</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ─────────────────────────────────────────────── -->
+<section id="cta-final">
+  <h2>Pronto para levar<br>sua pizzaria ao <span class="accent">próximo nível?</span></h2>
+  <p>Comece hoje mesmo. Em menos de 5 minutos você já está gerenciando pedidos.</p>
+  <div class="final-ctas">
+    <a href="mailto:contato@forneriatech.com.br?subject=Quero%20começar%20no%20Forneria%20Tech" class="cta-main">
+      Criar minha conta
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#F5EFE6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="mailto:contato@forneriatech.com.br" class="cta-sec">Falar com a gente</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-mark">
+          <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+            <path fill-rule="evenodd" fill="#F5EFE6" d="M14 54 L14 30 A18 18 0 0 1 50 30 L50 54 Z M23 50 L23 33 A9 9 0 0 1 41 33 L41 50 Z M32 48 C26 45 27 38.5 32 34.5 C37 38.5 38 45 32 48 Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="footer-logo-name">Forneria</div>
+          <div class="footer-logo-sub">Tech</div>
+        </div>
+      </div>
+      <p class="footer-tagline">O sistema inteligente para pizzarias que levam o negócio a sério.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Produto</h4>
+      <ul>
+        <li><a href="#features">Recursos</a></li>
+        <li><a href="#plans">Planos e preços</a></li>
+        <li><a href="https://app.forneriatech.com.br/login">Entrar</a></li>
+        <li><a href="mailto:contato@forneriatech.com.br?subject=Quero%20começar%20no%20Forneria%20Tech">Criar conta</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="mailto:contato@forneriatech.com.br">Contato</a></li>
+        <li><a href="https://instagram.com/forneriatech" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Forneria Tech · contato@forneriatech.com.br</span>
+    <div class="footer-social">
+      <a href="https://instagram.com/forneriatech" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
