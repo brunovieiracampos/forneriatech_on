@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -131,11 +133,8 @@
     <!-- LOGO -->
     <div class="logo">
       <div class="logo-mark">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.5c5.25 0 9.5 4.25 9.5 9.5 0 .69-.07 1.36-.21 2.01L12 21.5 2.71 14.01A9.6 9.6 0 0 1 2.5 12c0-5.25 4.25-9.5 9.5-9.5Z" fill="#C45C2E" stroke="#F5EFE6" stroke-width="1.3" stroke-linejoin="round"/>
-          <circle cx="9" cy="10" r="1.35" fill="#F5EFE6"/>
-          <circle cx="14" cy="9" r="1.2" fill="#F5EFE6"/>
-          <circle cx="13" cy="14" r="1.35" fill="#F5EFE6"/>
+        <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" fill="#F5EFE6" d="M14 54 L14 30 A18 18 0 0 1 50 30 L50 54 Z M23 50 L23 33 A9 9 0 0 1 41 33 L41 50 Z M32 48 C26 45 27 38.5 32 34.5 C37 38.5 38 45 32 48 Z"/>
         </svg>
       </div>
       <div>
@@ -152,19 +151,65 @@
 
     <p class="subtitle">Gerencie pedidos, equipe, cardápio e entregas em um só lugar. Em breve disponível para sua pizzaria.</p>
 
-    <!-- FORM (visual only) -->
-    <form onsubmit="return false;">
+    <!-- FORM -->
+    <form id="form">
       <div class="field">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#9c968d" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="#9c968d" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <input type="email" placeholder="Seu melhor e-mail" aria-label="E-mail">
+        <input id="email-input" type="email" placeholder="Seu melhor e-mail" aria-label="E-mail" autocomplete="email">
       </div>
-      <button type="submit">
+      <button id="btn" type="submit">
         Quero ser avisado
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg id="btn-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </form>
 
-    <div class="hint">Avisamos você assim que o Forneria estiver disponível. Sem spam.</div>
+    <div id="hint" class="hint">Avisamos você assim que o Forneria estiver disponível. Sem spam.</div>
+
+    <a href="https://instagram.com/forneriatech" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:28px;text-decoration:none;color:#6B6B6B;font-size:14px;font-weight:500;transition:color .14s" onmouseover="this.style.color='#C45C2E'" onmouseout="this.style.color='#6B6B6B'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+      @forneriatech
+    </a>
+
+    <script>
+      const form = document.getElementById('form')
+      const input = document.getElementById('email-input')
+      const btn = document.getElementById('btn')
+      const hint = document.getElementById('hint')
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault()
+        const email = input.value.trim()
+        if (!email) return
+
+        btn.disabled = true
+        btn.textContent = 'Enviando...'
+
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          })
+
+          if (res.ok) {
+            form.style.display = 'none'
+            hint.textContent = '✓ Anotado! Você será o primeiro a saber.'
+            hint.style.color = '#3D6B4F'
+            hint.style.fontWeight = '600'
+          } else {
+            hint.textContent = 'Algo deu errado. Tente novamente.'
+            hint.style.color = '#C0392B'
+            btn.disabled = false
+            btn.textContent = 'Quero ser avisado'
+          }
+        } catch {
+          hint.textContent = 'Erro de conexão. Tente novamente.'
+          hint.style.color = '#C0392B'
+          btn.disabled = false
+          btn.textContent = 'Quero ser avisado'
+        }
+      })
+    </script>
   </div>
 
   <footer>
