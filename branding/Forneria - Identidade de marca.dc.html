@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;background:#EAE0D1;color:#1E1E1E}
+</style>
+</helmet>
+
+<!-- ============ SYMBOL DEFINITIONS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mk-arch" viewBox="0 0 64 64">
+    <path fill-rule="evenodd" fill="currentColor" d="M14 54 L14 30 A18 18 0 0 1 50 30 L50 54 Z M23 50 L23 33 A9 9 0 0 1 41 33 L41 50 Z M32 48 C26 45 27 38.5 32 34.5 C37 38.5 38 45 32 48 Z"/>
+  </symbol>
+  <symbol id="mk-wedge" viewBox="0 0 64 64">
+    <path fill-rule="evenodd" fill="currentColor" d="M32 12 L50 49 A42 42 0 0 1 14 49 Z M32 33 m-3.4 0 a3.4 3.4 0 1 0 6.8 0 a3.4 3.4 0 1 0 -6.8 0 Z"/>
+  </symbol>
+  <symbol id="mk-ember" viewBox="0 0 64 64">
+    <path fill-rule="evenodd" fill="currentColor" d="M32 7 C45 21 47 35 38.5 45.5 C35.5 49 28.5 49 25.5 45.5 C17 35 19 21 32 7 Z M32 24 C38 31 38.5 38 34 43 C32.5 45 31.5 45 30 43 C25.5 38 26 31 32 24 Z"/>
+  </symbol>
+</defs></svg>
+
+<div style="max-width:1200px;margin:0 auto;padding:60px 48px 90px">
+
+  <!-- ============ HEADER ============ -->
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:30px;border-bottom:1px solid #D2C6B5;margin-bottom:56px">
+    <div style="display:flex;align-items:center;gap:16px">
+      <div style="width:48px;height:48px;border-radius:13px;background:#C45C2E;display:flex;align-items:center;justify-content:center">
+        <svg width="30" height="30" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+      </div>
+      <div style="line-height:1">
+        <div style="font-family:'DM Serif Display',serif;font-size:26px;color:#1E1E1E">Forneria</div>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a">Sistema de identidade visual</div>
+      <div style="font-size:13px;color:#8a7d6e;margin-top:5px">Logo · símbolo · aplicações — junho 2026</div>
+    </div>
+  </div>
+
+  <!-- ============ 1 · EXPLORAÇÕES DO SÍMBOLO ============ -->
+  <div style="margin-bottom:64px">
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">01 — Explorações do símbolo</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:8px">Três direções geométricas</div>
+    <p style="font-size:15px;line-height:1.6;color:#6B6B6B;max-width:620px;margin-bottom:30px">Cada direção traduz forno / brasa de forma sofisticada, sem clichês literais. Reconhecível e limpa a 22px e dentro de um círculo.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+
+      <!-- Concept A: arch (chosen) -->
+      <div style="background:#F5EFE6;border:2px solid #C45C2E;border-radius:18px;padding:30px 26px;position:relative">
+        <div style="position:absolute;top:16px;right:16px;background:#C45C2E;color:#F5EFE6;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 11px;border-radius:20px">Escolhido</div>
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px">
+          <div style="width:72px;height:72px;border-radius:19px;background:#C45C2E;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="46" height="46" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center">
+            <svg width="38" height="38" style="color:#1E1E1E"><use href="#mk-arch"/></svg>
+            <svg width="22" height="22" style="color:#1E1E1E"><use href="#mk-arch"/></svg>
+          </div>
+        </div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:#1E1E1E;margin-bottom:6px">A boca do forno</div>
+        <p style="font-size:13.5px;line-height:1.55;color:#6B6B6B">O arco do forno a lenha com a brasa acesa por dentro. Único, geométrico e literalmente ligado ao nome <em>Forneria</em>.</p>
+      </div>
+
+      <!-- Concept B: wedge -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px 26px">
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px">
+          <div style="width:72px;height:72px;border-radius:19px;background:#C45C2E;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="46" height="46" style="color:#F5EFE6"><use href="#mk-wedge"/></svg>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center">
+            <svg width="38" height="38" style="color:#1E1E1E"><use href="#mk-wedge"/></svg>
+            <svg width="22" height="22" style="color:#1E1E1E"><use href="#mk-wedge"/></svg>
+          </div>
+        </div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:#1E1E1E;margin-bottom:6px">A cunha</div>
+        <p style="font-size:13.5px;line-height:1.55;color:#6B6B6B">A fatia reduzida a uma cunha com uma única brasa vazada. Direto e amigável, porém menos distintivo.</p>
+      </div>
+
+      <!-- Concept C: ember -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px 26px">
+        <div style="display:flex;align-items:center;gap:18px;margin-bottom:24px">
+          <div style="width:72px;height:72px;border-radius:19px;background:#C45C2E;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="46" height="46" style="color:#F5EFE6"><use href="#mk-ember"/></svg>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center">
+            <svg width="38" height="38" style="color:#1E1E1E"><use href="#mk-ember"/></svg>
+            <svg width="22" height="22" style="color:#1E1E1E"><use href="#mk-ember"/></svg>
+          </div>
+        </div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:#1E1E1E;margin-bottom:6px">A brasa</div>
+        <p style="font-size:13.5px;line-height:1.55;color:#6B6B6B">Chama abstrata com núcleo aceso. Calorosa, mas a forma de chama é a mais comum entre marcas.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 2 · LOCKUP PRINCIPAL ============ -->
+  <div style="margin-bottom:64px">
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">02 — Lockup principal</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:24px">Empilhado completo</div>
+
+    <div style="background:#F5EFE6;border:1px solid #D9CFC3;border-radius:18px;padding:64px 56px;display:flex;align-items:center;justify-content:center">
+      <!-- stacked lockup -->
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="width:92px;height:92px;border-radius:24px;background:#C45C2E;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="58" height="58" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;margin-top:2px">
+          <span style="font-family:'DM Serif Display',serif;font-size:64px;line-height:1;color:#1E1E1E">Forneria</span>
+          <span style="font-family:'DM Sans';font-size:15px;font-weight:600;letter-spacing:3px;color:#C45C2E;margin-top:7px">tech</span>
+          <span style="font-family:'DM Sans';font-size:12.5px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#8a7d6e;margin-top:11px">Gestão para pizzarias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 3 · SÍMBOLO ISOLADO ============ -->
+  <div style="margin-bottom:64px">
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">03 — Símbolo isolado</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:8px">Favicon e sidebar</div>
+    <p style="font-size:15px;line-height:1.6;color:#6B6B6B;max-width:620px;margin-bottom:30px">O símbolo sozinho, na placa em brasa e isolado em uma cor. Mantém a leitura do 16px ao 64px.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+      <!-- tile sizes -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:38px;display:flex;align-items:flex-end;justify-content:center;gap:34px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><div style="width:64px;height:64px;border-radius:17px;background:#C45C2E;display:flex;align-items:center;justify-content:center"><svg width="40" height="40" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div><span style="font-size:11px;color:#a8998a">64px</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><div style="width:38px;height:38px;border-radius:10px;background:#C45C2E;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div><span style="font-size:11px;color:#a8998a">38px</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><div style="width:24px;height:24px;border-radius:7px;background:#C45C2E;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div><span style="font-size:11px;color:#a8998a">24px</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><div style="width:16px;height:16px;border-radius:5px;background:#C45C2E;display:flex;align-items:center;justify-content:center"><svg width="10" height="10" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div><span style="font-size:11px;color:#a8998a">16px</span></div>
+      </div>
+      <!-- positive / negative -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <div style="background:#F5EFE6;border:1px solid #D9CFC3;border-radius:18px;padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+          <svg width="56" height="56" style="color:#C45C2E"><use href="#mk-arch"/></svg>
+          <span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Brasa / sem placa</span>
+        </div>
+        <div style="background:#1E1E1E;border-radius:18px;padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+          <svg width="56" height="56" style="color:#C45C2E"><use href="#mk-arch"/></svg>
+          <span style="font-size:11px;color:#8a8175;letter-spacing:1px;text-transform:uppercase">Sobre carvão</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 4 · MONOCROMÁTICO ============ -->
+  <div style="margin-bottom:64px">
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">04 — Monocromático</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:8px">Uma cor, sobre fundos sólidos</div>
+    <p style="font-size:15px;line-height:1.6;color:#6B6B6B;max-width:620px;margin-bottom:30px">Quando a brasa não está disponível — impressão, gravação, fundos saturados — o lockup colapsa para tinta única. O <em>tech</em> mantém o destaque por espaçamento, não por cor.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+      <!-- mono on carvão -->
+      <div style="background:#1E1E1E;border-radius:18px;padding:44px 40px;display:flex;flex-direction:column;align-items:center">
+        <svg width="56" height="56" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+        <div style="display:flex;flex-direction:column;align-items:center;margin-top:1px">
+          <span style="font-family:'DM Serif Display',serif;font-size:42px;line-height:1;color:#F5EFE6">Forneria</span>
+          <span style="font-family:'DM Sans';font-size:11px;font-weight:600;letter-spacing:2.5px;color:#F5EFE6;opacity:.85;margin-top:5px">tech</span>
+          <span style="font-family:'DM Sans';font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#F5EFE6;opacity:.55;margin-top:8px">Gestão para pizzarias</span>
+        </div>
+      </div>
+      <!-- mono on brasa -->
+      <div style="background:#C45C2E;border-radius:18px;padding:44px 40px;display:flex;flex-direction:column;align-items:center">
+        <svg width="56" height="56" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+        <div style="display:flex;flex-direction:column;align-items:center;margin-top:1px">
+          <span style="font-family:'DM Serif Display',serif;font-size:42px;line-height:1;color:#F5EFE6">Forneria</span>
+          <span style="font-family:'DM Sans';font-size:11px;font-weight:600;letter-spacing:2.5px;color:#F5EFE6;opacity:.88;margin-top:5px">tech</span>
+          <span style="font-family:'DM Sans';font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#F5EFE6;opacity:.62;margin-top:8px">Gestão para pizzarias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 5 · INSTAGRAM ============ -->
+  <div style="margin-bottom:64px">
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">05 — Instagram · @forneriatech</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:8px">Perfil e post quadrado</div>
+    <p style="font-size:15px;line-height:1.6;color:#6B6B6B;max-width:620px;margin-bottom:30px">Foto de perfil com folga generosa nas bordas — o Instagram corta os cantos. Nítida e reconhecível a ~110px.</p>
+
+    <div style="display:grid;grid-template-columns:1.1fr 1.1fr 1.4fr;gap:22px">
+
+      <!-- avatar on brasa -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+        <div style="width:200px;height:200px;border-radius:50%;background:#C45C2E;display:flex;align-items:center;justify-content:center">
+          <svg width="96" height="96" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+        </div>
+        <span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Fundo brasa</span>
+      </div>
+
+      <!-- avatar on massa -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+        <div style="width:200px;height:200px;border-radius:50%;background:#F5EFE6;border:1px solid #E2D6C4;display:flex;align-items:center;justify-content:center">
+          <svg width="96" height="96" style="color:#C45C2E"><use href="#mk-arch"/></svg>
+        </div>
+        <span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Fundo massa</span>
+      </div>
+
+      <!-- square 1:1 lockup -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+        <div style="width:262px;height:262px;border-radius:16px;background:#C45C2E;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <svg width="74" height="74" style="color:#F5EFE6"><use href="#mk-arch"/></svg>
+          <div style="display:flex;flex-direction:column;align-items:center;margin-top:2px">
+            <span style="font-family:'DM Serif Display',serif;font-size:40px;line-height:1;color:#F5EFE6">Forneria</span>
+            <span style="font-family:'DM Sans';font-size:10.5px;font-weight:600;letter-spacing:2.5px;color:#F5EFE6;opacity:.85;margin-top:5px">tech</span>
+            <span style="font-family:'DM Sans';font-size:8.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#F5EFE6;opacity:.62;margin-top:8px">Gestão para pizzarias</span>
+          </div>
+        </div>
+        <span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Lockup quadrado 1:1</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 6 · CONTEXTOS ============ -->
+  <div style="margin-bottom:64px">
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">06 — Demonstração em contexto</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:24px">Onde a marca vive</div>
+
+    <div style="display:grid;grid-template-columns:0.85fr 1.15fr 0.8fr;gap:22px;align-items:stretch">
+
+      <!-- sidebar 38px -->
+      <div style="border-radius:18px;overflow:hidden;border:1px solid #D9CFC3;display:flex;flex-direction:column">
+        <div style="background:#1E1E1E;padding:22px 20px;flex:1;display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <div style="width:38px;height:38px;border-radius:10px;background:#C45C2E;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="24" height="24" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div>
+            <div style="font-family:'DM Serif Display',serif;font-size:18px;color:#F5EFE6;line-height:1">Forneria</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:9px;background:rgba(196,92,46,0.18)"><div style="width:7px;height:7px;border-radius:50%;background:#E08B5F"></div><span style="font-size:12.5px;color:#F5EFE6;font-weight:500">Pedidos</span></div>
+            <div style="display:flex;align-items:center;gap:11px;padding:9px 11px"><div style="width:7px;height:7px;border-radius:50%;background:#5a544c"></div><span style="font-size:12.5px;color:#9a9088">Cozinha</span></div>
+            <div style="display:flex;align-items:center;gap:11px;padding:9px 11px"><div style="width:7px;height:7px;border-radius:50%;background:#5a544c"></div><span style="font-size:12.5px;color:#9a9088">Logística</span></div>
+            <div style="display:flex;align-items:center;gap:11px;padding:9px 11px"><div style="width:7px;height:7px;border-radius:50%;background:#5a544c"></div><span style="font-size:12.5px;color:#9a9088">Clientes</span></div>
+          </div>
+        </div>
+        <div style="background:#EDE3D4;padding:11px 16px;text-align:center"><span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Sidebar · 38px sobre carvão</span></div>
+      </div>
+
+      <!-- login 58px -->
+      <div style="border-radius:18px;overflow:hidden;border:1px solid #D9CFC3;display:flex;flex-direction:column">
+        <div style="background:#F5EFE6;padding:40px 32px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:26px">
+            <div style="width:58px;height:58px;border-radius:15px;background:#C45C2E;display:flex;align-items:center;justify-content:center"><svg width="37" height="37" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div>
+            <div style="display:flex;flex-direction:column;align-items:center">
+              <span style="font-family:'DM Serif Display',serif;font-size:26px;line-height:1;color:#1E1E1E">Forneria</span>
+              <span style="font-family:'DM Sans';font-size:9px;font-weight:600;letter-spacing:2px;color:#C45C2E;margin-top:4px">tech</span>
+              <span style="font-family:'DM Sans';font-size:7px;font-weight:500;letter-spacing:0.3px;text-transform:uppercase;color:#9c968d;margin-top:6px">Gestão para pizzarias</span>
+            </div>
+          </div>
+          <div style="width:100%;max-width:260px;background:#EDE3D4;border:1px solid #D9CFC3;border-radius:14px;padding:22px">
+            <div style="height:11px;width:38%;background:#ccbfad;border-radius:4px;margin-bottom:10px"></div>
+            <div style="height:38px;background:#F5EFE6;border:1px solid #D9CFC3;border-radius:9px;margin-bottom:14px"></div>
+            <div style="height:11px;width:30%;background:#ccbfad;border-radius:4px;margin-bottom:10px"></div>
+            <div style="height:38px;background:#F5EFE6;border:1px solid #D9CFC3;border-radius:9px;margin-bottom:18px"></div>
+            <div style="height:42px;background:#C45C2E;border-radius:11px;display:flex;align-items:center;justify-content:center"><span style="font-size:13px;font-weight:700;color:#F5EFE6">Entrar</span></div>
+          </div>
+        </div>
+        <div style="background:#EDE3D4;padding:11px 16px;text-align:center"><span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Login · 58px sobre massa</span></div>
+      </div>
+
+      <!-- IG avatar small -->
+      <div style="border-radius:18px;overflow:hidden;border:1px solid #D9CFC3;display:flex;flex-direction:column">
+        <div style="background:#FAFAFA;padding:30px 24px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+          <div style="width:88px;height:88px;border-radius:50%;background:#C45C2E;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 0 0 1px #eee"><svg width="42" height="42" style="color:#F5EFE6"><use href="#mk-arch"/></svg></div>
+          <div style="text-align:center">
+            <div style="font-size:14px;font-weight:600;color:#1E1E1E">forneriatech</div>
+            <div style="font-size:12px;color:#8a8a8a;margin-top:2px">Gestão para pizzarias 🍕</div>
+          </div>
+          <div style="display:flex;gap:7px;margin-top:2px">
+            <div style="font-size:11px;color:#fff;background:#0095F6;padding:5px 16px;border-radius:8px;font-weight:600">Seguir</div>
+            <div style="font-size:11px;color:#1E1E1E;background:#EFEFEF;padding:5px 16px;border-radius:8px;font-weight:600">Mensagem</div>
+          </div>
+        </div>
+        <div style="background:#EDE3D4;padding:11px 16px;text-align:center"><span style="font-size:11px;color:#a8998a;letter-spacing:1px;text-transform:uppercase">Perfil · ~110px</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 7 · PALETA + TIPOGRAFIA ============ -->
+  <div>
+    <div style="font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">07 — Fundamentos</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#1E1E1E;margin-bottom:24px">Paleta e tipografia</div>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:22px">
+      <!-- palette -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px">
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
+          <div><div style="height:84px;border-radius:12px;background:#C45C2E;margin-bottom:10px"></div><div style="font-size:12.5px;font-weight:600;color:#1E1E1E">Brasa</div><div style="font-size:11px;color:#8a7d6e;font-variant-numeric:tabular-nums">#C45C2E</div></div>
+          <div><div style="height:84px;border-radius:12px;background:#1E1E1E;margin-bottom:10px"></div><div style="font-size:12.5px;font-weight:600;color:#1E1E1E">Carvão</div><div style="font-size:11px;color:#8a7d6e;font-variant-numeric:tabular-nums">#1E1E1E</div></div>
+          <div><div style="height:84px;border-radius:12px;background:#F5EFE6;border:1px solid #E2D6C4;margin-bottom:10px"></div><div style="font-size:12.5px;font-weight:600;color:#1E1E1E">Massa</div><div style="font-size:11px;color:#8a7d6e;font-variant-numeric:tabular-nums">#F5EFE6</div></div>
+          <div><div style="height:84px;border-radius:12px;background:#EDE3D4;border:1px solid #E2D6C4;margin-bottom:10px"></div><div style="font-size:12.5px;font-weight:600;color:#1E1E1E">Creme</div><div style="font-size:11px;color:#8a7d6e;font-variant-numeric:tabular-nums">#EDE3D4</div></div>
+          <div><div style="height:84px;border-radius:12px;background:#3D6B4F;margin-bottom:10px"></div><div style="font-size:12.5px;font-weight:600;color:#1E1E1E">Manjericão</div><div style="font-size:11px;color:#8a7d6e;font-variant-numeric:tabular-nums">#3D6B4F</div></div>
+        </div>
+      </div>
+      <!-- type -->
+      <div style="background:#EDE3D4;border:1px solid #D9CFC3;border-radius:18px;padding:30px;display:flex;flex-direction:column;justify-content:center;gap:18px">
+        <div>
+          <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">Wordmark</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:34px;color:#1E1E1E;line-height:1">Forneria</div>
+          <div style="font-size:12px;color:#8a7d6e;margin-top:4px">DM Serif Display · Regular</div>
+        </div>
+        <div style="height:1px;background:#D9CFC3"></div>
+        <div>
+          <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#a8998a;margin-bottom:6px">Assinatura &amp; interface</div>
+          <div style="font-family:'DM Sans';font-size:22px;font-weight:600;color:#1E1E1E;line-height:1">tech · Gestão</div>
+          <div style="font-size:12px;color:#8a7d6e;margin-top:4px">DM Sans · 400 / 500 / 600 / 700</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
